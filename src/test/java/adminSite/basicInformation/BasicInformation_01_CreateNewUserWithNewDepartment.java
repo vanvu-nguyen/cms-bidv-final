@@ -2,25 +2,21 @@ package adminSite.basicInformation;
 
 import com.github.javafaker.Faker;
 import commons.BaseTest;
-import commons.GlobalConstants;
-import jdbcTest.MariaDBConnUtils;
-import pageGenerator.AdminPageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pageGenerator.AdminPageGeneratorManager;
 import pageObjects.adminSite.DashboardPO;
 import pageObjects.adminSite.DepartmentPO;
 import pageObjects.adminSite.LoginPO;
 import pageObjects.adminSite.UserPO;
-
 import pageObjects.supportPlatform.TempMailPO;
 import pojoData.adminSite.DepartmentInfo;
 import pojoData.adminSite.UserInfo;
 import reportConfig.ExtentTestManager;
 
-import javax.crypto.spec.PSource;
 import java.lang.reflect.Method;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.Locale;
 
 
@@ -46,7 +42,8 @@ public class BasicInformation_01_CreateNewUserWithNewDepartment extends BaseTest
 
     @Parameters({"browser", "envName", "server", "ipAddress", "portNumber", "subSystem"})
     @BeforeClass
-    public void beforeClass(@Optional("") String browser,@Optional("") String envName,@Optional("") String server,@Optional("") String ipAddress,@Optional("") String portNumber,@Optional("") String subSystem) {
+    public void BeforeClass(@Optional("") String browser,@Optional("") String envName,@Optional("") String server,@Optional("") String ipAddress,@Optional("") String portNumber,@Optional("") String subSystem) {
+        System.out.println("browser: " + browser);
         driver = getBrowserDriver(browser, envName, server, ipAddress, portNumber, subSystem);
         cmsTitle = driver.getTitle();
         this.browser = browser;
